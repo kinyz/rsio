@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./;pb";
+
+
+message Propose {
+  ProposeType ProposeType=1;
+  string Topic=2; //Topic
+  string Key=3;//key
+  bytes  Value=4;//同步内容
+  int64  TimesTamp=5;
+
+}
+
+enum ProposeType{
+
+  SyncMessage = 0; //发送消息
+  SyncMemoryData =1;//同步内存数据
+  SyncDiskData =2;//同步硬盘数据
+  SyncMemoryAndDiskData=3;//同步内存和硬盘数据
+
+  SyncRemoveMemoryData=4;//删除内存数据
+  SyncRemoveDiskData=5;//删除硬盘数据
+
+  SyncLock=6;//同步锁
+  TopicAddConsumer=7;//增加消费者
+
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./;pb";
+
+
+
+message Topic{
+  string Name =1;
+  uint64 Count=2;//消息总数
+  uint64 ReadCount=3;//已读消息数
+}
