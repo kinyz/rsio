@@ -74,17 +74,17 @@ func (r *raft) StartCluster(clusterId uint64, role Role, create statemachine.Cre
 		CompactionOverhead: 5,
 	}
 	switch role {
-	case Role_Creator:
+	case RoleCreator:
 		initialMembers[1] = r.nh.RaftAddress()
 		break
-	case Role_Follower:
+	case RoleFollower:
 		join = true
 		break
-	case Role_Witness:
+	case RoleWitness:
 		rc.SnapshotEntries = 0
 		rc.IsWitness = true
 		join = true
-	case Role_Observer:
+	case RoleObserver:
 		rc.IsObserver = true
 		join = true
 	default:
